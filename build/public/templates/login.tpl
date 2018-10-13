@@ -16,6 +16,7 @@
 </ol>
 <!-- ENDIF breadcrumbs.length -->
 
+
 <div class="row">
 	<!-- IF allowLocalLogin -->
 	<div class="<!-- IF alternate_logins -->col-md-6<!-- ELSE -->col-md-12<!-- ENDIF alternate_logins -->">
@@ -26,7 +27,7 @@
 				<p>{error}</p>
 			</div>
 
-			<form class="form-horizontal" role="form" method="post" id="login-form">
+			<form class="form-horizontal" role="form" method="post" target="login" id="login-form">
 				<div class="form-group">
 					<label for="username" class="col-lg-2 control-label">{allowLoginWith}</label>
 					<div class="col-lg-10">
@@ -48,10 +49,9 @@
 						</div>
 					</div>
 				</div>
-				<input type="hidden" name="_csrf" value="{config.csrf_token}" />
-				<input type="hidden" name="noscript" id="noscript" value="true" />
 				<div class="form-group">
 					<div class="col-lg-offset-2 col-lg-10">
+						<hr />
 						<button class="btn btn-primary btn-lg btn-block" id="login" type="submit">[[global:login]]</button>
 						<!-- IF allowRegistration -->
 						<span>[[login:dont_have_account]] <a href="{config.relative_path}/register">[[register:register]]</a></span>

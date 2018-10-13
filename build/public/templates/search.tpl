@@ -16,6 +16,7 @@
 </ol>
 <!-- ENDIF breadcrumbs.length -->
 
+
 <div class="search">
 	<div class="row">
 		<div class="col-xs-12">
@@ -38,7 +39,7 @@
 						</div>
 						<div class="col-md-2">
 							<label>&nbsp;</label>
-							<button type="submit" class="btn btn-primary form-control">[[global:search]]</button>
+							<button type="submit" class="btn btn-default form-control">[[global:search]]</button>
 						</div>
 					</div>
 				</div>
@@ -78,7 +79,6 @@
 							</select>
 							<input type="checkbox" id="search-children"> [[search:search-child-categories]]
 						</div>
-
 
 						<div class="form-group post-search-item">
 							<label>[[search:reply-count]]</label>
@@ -204,7 +204,7 @@
 								<div class="user-icon user-img" style="background-color: {posts.user.icon:bgColor};">{posts.user.icon:text}</div>
 								<!-- ENDIF posts.user.picture -->
 							</a>
-							<a href="{config.relative_path}/category/{posts.category.slug}">[[global:posted_in, {posts.category.name}]] <i class="fa {posts.category.icon}"></i> <span class="timeago" title="{posts.timestampISO}"></span></a>
+							<a href="{config.relative_path}/category/{posts.category.slug}">[[global:posted_in, {posts.category.name}]] <i class="fa {posts.category.icon}"></i></a> <span class="timeago" title="{posts.timestampISO}"></span>
 						</span>
 					</small>
 				</div>
@@ -217,7 +217,7 @@
 <li class="users-box registered-user" data-uid="{users.uid}">
 	<a href="{config.relative_path}/user/{users.userslug}">
 		<!-- IF users.picture -->
-		<img src="{users.picture}" />
+		<img src="{users.picture}" class="img-thumbnail"/>
 		<!-- ELSE -->
 		<div class="user-icon" style="background-color: {users.icon:bgColor};">{users.icon:text}</div>
 		<!-- ENDIF users.picture -->
@@ -229,31 +229,18 @@
 			<a href="{config.relative_path}/user/{users.userslug}">{users.username}</a>
 		</span>
 		<br/>
-
-		<!-- IF section_joindate -->
-		<div title="joindate" class="joindate">
-			<span class="timeago" title="{users.joindateISO}"></span>
-		</div>
-		<!-- ENDIF section_joindate -->
-
-		<!-- IF section_sort-reputation -->
 		<div title="reputation" class="reputation">
 			<i class="fa fa-star"></i>
 			<span class="formatted-number">{users.reputation}</span>
 		</div>
-		<!-- ENDIF section_sort-reputation -->
-
-		<!-- IF section_sort-posts -->
 		<div title="post count" class="post-count">
 			<i class="fa fa-pencil"></i>
 			<span class="formatted-number">{users.postcount}</span>
 		</div>
-		<!-- ENDIF section_sort-posts -->
-
 		<!-- IF section_flagged -->
 		<div title="flag count" class="flag-count">
 			<i class="fa fa-flag"></i>
-			<span><a class="formatted-number" href="{config.relative_path}/flags?targetUid={users.uid}">{users.flags}</a></span>
+			<span class="formatted-number"><a href="{config.relative_path}/flags?targetUid={users.uid}">{users.flags}</a></span>
 		</div>
 		<!-- ENDIF section_flagged -->
 	</div>
@@ -265,13 +252,14 @@
 			<!-- IF tags.length -->
 			<!-- BEGIN tags -->
 <h3 class="pull-left tag-container">
-	<a href="{config.relative_path}/tags/{tags.value}" data-value="{tags.value}"><span class="tag-item" data-tag="{tags.value}" style="<!-- IF tags.color -->color: {tags.color};<!-- ENDIF tags.color --><!-- IF tags.bgColor -->background-color: {tags.bgColor};<!-- ENDIF tags.bgColor -->">{tags.valueEscaped}</span><span class="tag-topic-count human-readable-number" title="{tags.score}">{tags.score}</span></a>
+	<a href="{config.relative_path}/tags/{tags.value}" data-value="{tags.value}"><span class="tag-item" data-tag="{tags.value}" style="<!-- IF tags.color -->color: {tags.color};<!-- ENDIF tags.color --><!-- IF tags.bgColor -->background-color: {tags.bgColor};<!-- ENDIF tags.bgColor -->">{tags.valueEscaped}</span><span class="tag-topic-count">{tags.score}</span></a>
 </h3>
 <!-- END tags -->
 			<!-- ENDIF tags.length -->
 
-			<div component="pagination" class="text-center pagination-container<!-- IF !pagination.pages.length --> hidden<!-- ENDIF !pagination.pages.length -->">
-	<ul class="pagination hidden-xs">
+			
+<div component="pagination" class="text-center pagination-container<!-- IF !pagination.pages.length --> hidden<!-- ENDIF !pagination.pages.length -->">
+	<ul class="pagination">
 		<li class="previous pull-left<!-- IF !pagination.prev.active --> disabled<!-- ENDIF !pagination.prev.active -->">
 			<a href="?{pagination.prev.qs}" data-page="{pagination.prev.page}"><i class="fa fa-chevron-left"></i> </a>
 		</li>
@@ -282,7 +270,7 @@
 				<a href="#"><i class="fa fa-ellipsis-h"></i></a>
 			</li>
 			<!-- ELSE -->
-			<li class="page<!-- IF pagination.pages.active --> active<!-- ENDIF pagination.pages.active -->" >
+			<li class="page<!-- IF pagination.pages.active --> active<!-- ELSE --> hidden-xs<!-- ENDIF pagination.pages.active -->" >
 				<a href="?{pagination.pages.qs}" data-page="{pagination.pages.page}">{pagination.pages.page}</a>
 			</li>
 			<!-- ENDIF pagination.pages.separator -->
@@ -292,29 +280,8 @@
 			<a href="?{pagination.next.qs}" data-page="{pagination.next.page}"> <i class="fa fa-chevron-right"></i></a>
 		</li>
 	</ul>
-
-	<ul class="pagination hidden-sm hidden-md hidden-lg">
-		<li class="first<!-- IF !pagination.prev.active --> disabled<!-- ENDIF !pagination.prev.active -->">
-			<a href="?page=1" data-page="1"><i class="fa fa-fast-backward"></i> </a>
-		</li>
-
-		<li class="previous<!-- IF !pagination.prev.active --> disabled<!-- ENDIF !pagination.prev.active -->">
-			<a href="?{pagination.prev.qs}" data-page="{pagination.prev.page}"><i class="fa fa-chevron-left"></i> </a>
-		</li>
-
-		<li component="pagination/select-page" class="page select-page">
-			<a href="#">{pagination.currentPage} / {pagination.pageCount}</a>
-		</li>
-
-		<li class="next<!-- IF !pagination.next.active --> disabled<!-- ENDIF !pagination.next.active -->">
-			<a href="?{pagination.next.qs}" data-page="{pagination.next.page}"> <i class="fa fa-chevron-right"></i></a>
-		</li>
-
-		<li class="last<!-- IF !pagination.next.active --> disabled<!-- ENDIF !pagination.next.active -->">
-			<a href="?page={pagination.pageCount}" data-page="{pagination.pageCount}"><i class="fa fa-fast-forward"></i> </a>
-		</li>
-	</ul>
 </div>
+
 		</div>
 	</div>
 </div>

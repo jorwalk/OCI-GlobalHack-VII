@@ -16,6 +16,7 @@
 </ol>
 <!-- ENDIF breadcrumbs.length -->
 
+
 <div class="cover" component="account/cover" style="background-image: url({cover:url}); background-position: {cover:position};">
 	<div class="avatar-wrapper" data-uid="{uid}">
 		<!-- IF picture -->

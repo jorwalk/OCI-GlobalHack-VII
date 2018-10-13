@@ -50,17 +50,8 @@
 			<div class="user-icon chat-user-image" style="background-color: {messages.fromUser.icon:bgColor};">{messages.fromUser.icon:text}</div>
 			<!-- ENDIF messages.fromUser.picture -->
 		</a>
-		<strong><span class="chat-user"><a href="{config.relative_path}/user/{messages.fromUser.userslug}">{messages.fromUser.username}</a></span></strong>
-		<!-- IF ../fromUser.banned -->
-		<span class="label label-danger">[[user:banned]]</span>
-		<!-- END -->
-		<!-- IF ../fromUser.deleted -->
-		<span class="label label-danger">[[user:deleted]]</span>
-		<!-- END -->
+		<strong><span class="chat-user">{messages.fromUser.username}</span></strong>
 		<span class="chat-timestamp timeago" title="{messages.timestampISO}"></span>
-		<!-- IF isAdminOrGlobalMod -->
-		<small class="chat-ip pull-right" title="[[modules:chat.show-ip]]"><i class="fa fa-info-circle chat-ip-button"></i></small>
-		<!-- ENDIF isAdminOrGlobalMod -->
 	</div>
 	<div component="chat/message/body" class="message-body">
 		<!-- IF messages.edited -->

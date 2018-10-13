@@ -3,7 +3,7 @@
 		<!-- IF group.isOwner -->
 		<div class="controls">
 			<span class="upload"><i class="fa fa-fw fa-4x fa-upload"></i></span>
-			<span class="resize"><i class="fa fa-fw fa-4x fa-arrows"></i></span>
+			<span class="resize"><i class="fa fa-fw fa-4x fa-arrows-alt"></i></span>
 			<span class="remove"><i class="fa fa-fw fa-4x fa-times"></i></span>
 		</div>
 		<div class="save">[[groups:cover-save]] <i class="fa fa-fw fa-floppy-o"></i></div>
@@ -29,9 +29,10 @@
 	<!-- END breadcrumbs -->
 </ol>
 <!-- ENDIF breadcrumbs.length -->
+
 	</div>
 
-	<div class="col-lg-4 col-xs-12">
+	<div class="col-lg-6 col-xs-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">
@@ -69,42 +70,48 @@
 	<div class="<!-- IF group.isOwner -->col-lg-10<!-- ELSE -->col-lg-12<!-- ENDIF group.isOwner -->">
 		<div class="input-group">
 			<input class="form-control" type="text" component="groups/members/search" placeholder="[[global:search]]"/>
-			<span class="input-group-addon search-button"><i class="fa fa-search"></i></span>
 		</div>
 	</div>
 </div>
 
 <table component="groups/members" class="table table-striped table-hover" data-nextstart="{group.membersNextStart}">
-	<tbody>
 	<!-- BEGIN group.members -->
 	<tr data-uid="{group.members.uid}">
 		<td>
 			<a href="{config.relative_path}/user/{group.members.userslug}">
 				<!-- IF group.members.picture -->
-				<img class="avatar avatar-sm avatar-rounded" src="{group.members.picture}" />
+				<img class="avatar avatar-sm" src="{group.members.picture}" />
 				<!-- ELSE -->
-				<div class="avatar avatar-sm avatar-rounded" style="background-color: {group.members.icon:bgColor};">{group.members.icon:text}</div>
+				<div class="avatar avatar-sm" style="background-color: {group.members.icon:bgColor};">{group.members.icon:text}</div>
 				<!-- ENDIF group.members.picture -->
 			</a>
 		</td>
 		<td class="member-name">
 			<a href="{config.relative_path}/user/{group.members.userslug}">{group.members.username}</a> <i title="[[groups:owner]]" class="fa fa-star text-warning <!-- IF !group.members.isOwner -->invisible<!-- ENDIF !group.members.isOwner -->"></i>
-
-			<!-- IF group.isOwner -->
-			<div class="owner-controls btn-group pull-right">
-				<a class="btn btn-sm" href="#" data-ajaxify="false" data-action="toggleOwnership" title="[[groups:details.grant]]">
-					<i class="fa fa-star"></i>
-				</a>
-
-				<a class="btn btn-sm" href="#" data-ajaxify="false" data-action="kick" title="[[groups:details.kick]]">
-					<i class="fa fa-ban"></i>
-				</a>
-			</div>
-			<!-- ENDIF group.isOwner -->
 		</td>
+		<!-- IF group.isOwner -->
+		<td>
+			<div class="btn-group pull-right">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+					[[global:more]] <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li>
+						<a href="#" data-ajaxify="false" data-action="toggleOwnership">
+							[[groups:details.grant]]
+						</a>
+					</li>
+					<li>
+						<a href="#" data-ajaxify="false" data-action="kick">
+							[[groups:details.kick]]
+						</a>
+					</li>
+				</ul>
+			</div>
+		</td>
+		<!-- ENDIF group.isOwner -->
 	</tr>
 	<!-- END group.members -->
-	</tbody>
 </table>
 			</div>
 		</div>
@@ -134,18 +141,20 @@
 					<!-- BEGIN group.pending -->
 					<tr data-uid="{group.pending.uid}">
 						<td>
-							<!-- IF group.pending.picture -->
-							<a href="{config.relative_path}/user/{group.pending.userslug}"><img class="avatar avatar-sm avatar-rounded" src="{group.pending.picture}" /></a>
-							<!-- ELSE -->
-							<div class="avatar avatar-sm avatar-rounded" style="background-color: {group.pending.icon:bgColor};">{group.pending.icon:text}</div>
-							<!-- ENDIF group.pending.picture -->
+							<a href="{config.relative_path}/user/{group.pending.userslug}">
+								<!-- IF group.pending.picture -->
+								<img src="{group.pending.picture}" />
+								<!-- ELSE -->
+								<div class="user-icon" style="background-color: {group.pending.icon:bgColor};">{group.pending.icon:text}</div>
+								<!-- ENDIF group.pending.picture -->
+							</a>
 						</td>
 						<td class="member-name">
 							<a href="{config.relative_path}/user/{group.pending.userslug}">{group.pending.username}</a>
 						</td>
 						<td>
 							<div class="btn-group pull-right">
-								<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 									[[global:more]] <span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu" role="menu">
@@ -166,9 +175,8 @@
 				</h3>
 			</div>
 			<div class="panel-body">
-				<div class="input-group">
+				<div class="form-group">
 					<input class="form-control" type="text" component="groups/members/invite" placeholder="[[groups:invited.search]]"/>
-					<span class="input-group-addon search-button"><i class="fa fa-search"></i></span>
 				</div>
 
 				<div class="form-group">
@@ -186,18 +194,20 @@
 					<!-- BEGIN group.invited -->
 					<tr data-uid="{group.invited.uid}">
 						<td>
-							<!-- IF group.invited.picture -->
-							<a href="{config.relative_path}/user/{group.invited.userslug}"><img class="avatar avatar-sm avatar-rounded" src="{group.invited.picture}" /></a>
-							<!-- ELSE -->
-							<div class="avatar avatar-sm avatar-rounded" style="background-color: {group.invited.icon:bgColor};">{group.invited.icon:text}</div>
-							<!-- ENDIF group.invited.picture -->
+							<a href="{config.relative_path}/user/{group.invited.userslug}">
+								<!-- IF group.invited.picture -->
+								<img src="{group.invited.picture}" />
+								<!-- ELSE -->
+								<div class="user-icon" style="background-color: {group.invited.icon:bgColor};">{group.invited.icon:text}</div>
+								<!-- ENDIF group.invited.picture -->
+							</a>
 						</td>
 						<td class="member-name">
 							<a href="{config.relative_path}/user/{group.invited.userslug}">{group.invited.username}</a>
 						</td>
 						<td>
 							<div class="btn-group pull-right">
-								<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 									[[global:more]] <span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu" role="menu">
@@ -210,7 +220,15 @@
 				</table>
 			</div>
 		</div>
-
+		<!-- ENDIF group.isOwner -->
+		<div widget-area="left">
+			<!-- BEGIN widgets.left -->
+			{{widgets.left.html}}
+			<!-- END widgets.left -->
+		</div>
+	</div>
+	<div class="col-lg-6 col-xs-12">
+		<!-- IF group.isOwner -->
 		<div class="panel panel-default">
 			<div class="panel-heading pointer" data-toggle="collapse" data-target=".options">
 				<h3 class="panel-title">
@@ -236,7 +254,7 @@
 
 					<div class="form-group user-title-option">
 						<label>[[groups:details.badge_preview]]</label><br />
-						<span class="label<!-- IF !group.userTitleEnabled --> hide<!-- ENDIF !group.userTitleEnabled -->" style="background-color: {group.labelColor}"><i class="fa<!-- IF group.icon --> {group.icon}<!-- ENDIF group.icon -->"></i> <!-- IF group.userTitle -->{group.userTitle}<!-- ELSE -->{group.displayName}<!-- ENDIF group.userTitle --></span>
+						<span class="label<!-- IF !group.userTitleEnabled --> hide<!-- ENDIF !group.userTitleEnabled -->" style="background-color: {group.labelColor}"><i class="fa<!-- IF group.icon -->{group.icon}<!-- ENDIF group.icon -->"></i> <!-- IF group.userTitle -->{group.userTitle}<!-- ELSE -->{group.displayName}<!-- ENDIF group.userTitle --></span>
 
 						<button component="groups/userTitleOption" type="button" class="btn btn-default btn-sm" data-action="icon-select"<!-- IF !group.userTitleEnabled --> disabled<!-- ENDIF !group.userTitleEnabled -->>[[groups:details.change_icon]]</button>
 						<button component="groups/userTitleOption" type="button" class="btn btn-default btn-sm" data-action="color-select"<!-- IF !group.userTitleEnabled --> disabled<!-- ENDIF !group.userTitleEnabled -->>[[groups:details.change_colour]]</button>
@@ -1088,33 +1106,18 @@
 			</div>
 		</div>
 		<!-- ENDIF group.isOwner -->
-		<div widget-area="left">
-			<!-- BEGIN widgets.left -->
-			{{widgets.left.html}}
-			<!-- END widgets.left -->
-		</div>
-	</div>
-	<div class="col-lg-8 col-xs-12">
-		<div class="col-lg-11">
+
+		<div>
 			<!-- IF !posts.length -->
 			<div class="alert alert-info">[[groups:details.has_no_posts]]</div>
 			<!-- ENDIF !posts.length -->
 			<ul component="posts" class="posts-list" data-nextstart="{nextStart}">
 
 	<!-- BEGIN posts -->
-	<li component="post" class="posts-list-item row<!-- IF posts.deleted --> deleted<!-- ELSE --><!-- IF posts.topic.deleted --> deleted<!-- ENDIF posts.topic.deleted --><!-- ENDIF posts.deleted -->" data-pid="{posts.pid}" data-uid="{posts.uid}">
-		<div class="col-lg-11 col-sm-10 col-xs-9 post-body">
-			<a class="topic-title" href="{config.relative_path}/post/{posts.pid}">
-				<!-- IF !posts.isMainPost -->RE: <!-- ENDIF !posts.isMainPost -->{posts.topic.title}
-			</a>
+	<li component="post" class="posts-list-item" data-pid="{posts.pid}" data-uid="{posts.uid}">
 
-			<div component="post/content" class="content">
-				{posts.content}
-			</div>
-
-			<small class="topic-category"><a href="{config.relative_path}/category/{posts.category.slug}">[[global:posted_in, {posts.category.name}]]</a></small>
-
-			<div class="post-info">
+		<div class="panel panel-default">
+			<div class="panel-body">
 				<a href="{config.relative_path}/user/{posts.user.userslug}">
 					<!-- IF posts.user.picture -->
 					<img title="{posts.user.username}" class="img-rounded user-img" src="{posts.user.picture}">
@@ -1123,12 +1126,22 @@
 					<!-- ENDIF posts.user.picture -->
 				</a>
 
-				<div class="post-author">
-					<a href="{config.relative_path}/user/{posts.user.userslug}">{posts.user.username}</a><br />
-					<span class="timeago" title="{posts.timestampISO}"></span>
+				<a href="{config.relative_path}/user/{posts.user.userslug}">
+					<strong><span>{posts.user.username}</span></strong>
+				</a>
+				<div component="post/content" class="content">
+					<p>{posts.content}</p>
+					<p class="fade-out"></p>
 				</div>
+				<small>
+					<span class="pull-right">
+						<a href="{config.relative_path}/category/{posts.category.slug}">[[global:posted_in, {posts.category.name}]] <i class="fa {posts.category.icon}"></i> <span class="timeago" title="{posts.timestampISO}"></span></a> &bull;
+						<a href="{config.relative_path}/post/{posts.pid}">[[global:read_more]]</a>
+					</span>
+				</small>
 			</div>
 		</div>
+
 	</li>
 	<!-- END posts -->
 </ul>

@@ -1,12 +1,11 @@
 {
-    "url": "https://fierce-castle-49474.herokuapp.com",
+    "url": "http://localhost:4567",
     "secret": "acbb16e1-c722-46af-864a-4f1be4574be1",
     "database": "mongo",
+    "port": "4567",
     "mongo": {
         "host": "127.0.0.1",
         "port": 27017,
-        "username": "",
-        "password": "",
         "database": "nodebb",
         "uri": "mongodb://nodebb:c8MtqxTluCDyY5K@ds231643.mlab.com:31643/globalhack7"
     }

@@ -16,10 +16,12 @@
 </ol>
 <!-- ENDIF breadcrumbs.length -->
 
+
 <div class="row register">
 	<div class="{register_window:spansize}">
 		<div class="register-block">
-			<div class="alert alert-danger<!-- IF !error --> hidden<!-- ENDIF !error -->" id="register-error-notify" >
+			<div class="alert alert-danger<!-- IF !error --> hidden<!-- ENDIF !error -->" id="register-error-notify">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
 				<strong>[[error:registration-error]]</strong>
 				<p>{error}</p>
 			</div>
@@ -72,8 +74,6 @@
 				</div>
 				<input id="referrer" type="hidden" name="referrer" value="" />
 				<input id="token" type="hidden" name="token" value="" />
-				<input id="noscript" type="hidden" name="noscript" value="true" />
-				<input type="hidden" name="_csrf" value="{config.csrf_token}" />
 			</form>
 		</div>
 	</div>

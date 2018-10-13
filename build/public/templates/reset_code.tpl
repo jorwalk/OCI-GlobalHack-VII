@@ -16,6 +16,7 @@
 </ol>
 <!-- ENDIF breadcrumbs.length -->
 
+
 <!-- IF valid -->
 <div class="well">
 	<!-- IF displayExpiryNotice -->
@@ -23,12 +24,12 @@
 		[[reset_password:password_expired]]
 	</div>
 	<!-- ENDIF displayExpiryNotice -->
-	<div class="alert alert-success hidden" id="success">
+	<div class="alert alert-success" id="success" style="display:none">
 		<button type="button" class="close" data-dismiss="alert">&times;</button>
 		<strong>[[reset_password:password_changed.title]]</strong>
 		<p>[[reset_password:password_changed.message]]</p>
 	</div>
-	<div class="alert alert-warning hidden" id="notice">
+	<div class="alert alert-warning" id="notice" style="display:none">
 		<strong></strong>
 		<p></p>
 	</div>
@@ -41,6 +42,7 @@
 			<label for="repeat">[[reset_password:repeat_password]]</label>
 			<input class="form-control" type="password" placeholder="[[reset_password:repeat_password]]" id="repeat" /><br />
 		</div>
+
 		<div class="col-xs-12">
 			<button class="btn btn-primary btn-block" id="reset" type="submit">[[reset_password:reset_password]]</button>
 		</div>

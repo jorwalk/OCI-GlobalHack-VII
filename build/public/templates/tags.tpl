@@ -1,4 +1,5 @@
-<!-- IF breadcrumbs.length -->
+<div class="tags">
+	<!-- IF breadcrumbs.length -->
 <ol class="breadcrumb">
 	<!-- BEGIN breadcrumbs -->
 	<li<!-- IF @last --> component="breadcrumb/current"<!-- ENDIF @last --> itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb" <!-- IF @last -->class="active"<!-- ENDIF @last -->>
@@ -15,34 +16,24 @@
 	<!-- END breadcrumbs -->
 </ol>
 <!-- ENDIF breadcrumbs.length -->
-<div widget-area="header">
-	<!-- BEGIN widgets.header -->
-	{{widgets.header.html}}
-	<!-- END widgets.header -->
-</div>
-<div class="tags">
-	<!-- IF displayTagSearch -->
-	<!-- IF tags.length -->
-	<div class="row">
-		<div class="col-lg-12">
-			<div class="input-group">
-				<input type="text" class="form-control" placeholder="[[global:search]]" id="tag-search">
-				<span class="input-group-addon search-button"><i class="fa fa-search"></i></span>
-			</div>
-		</div>
-	</div>
-	<!-- ENDIF tags.length -->
-	<!-- ENDIF displayTagSearch -->
+
 
 	<!-- IF !tags.length -->
-	<div class="alert alert-warning">[[tags:no_tags]]</div>
+	<div class="alert alert-warning">
+		<strong>[[tags:no_tags]]</strong>
+	</div>
 	<!-- ENDIF !tags.length -->
+
+	<!-- IF displayTagSearch -->
+	<input class="form-control" type="text" id="tag-search" placeholder="[[global:search]]"/>
+	<br/>
+	<!-- ENDIF displayTagSearch -->
 
 	<div class="category row">
 		<div class="col-md-12 clearfix tag-list" data-nextstart="{nextStart}">
 			<!-- BEGIN tags -->
 <h3 class="pull-left tag-container">
-	<a href="{config.relative_path}/tags/{tags.value}" data-value="{tags.value}"><span class="tag-item" data-tag="{tags.value}" style="<!-- IF tags.color -->color: {tags.color};<!-- ENDIF tags.color --><!-- IF tags.bgColor -->background-color: {tags.bgColor};<!-- ENDIF tags.bgColor -->">{tags.valueEscaped}</span><span class="tag-topic-count human-readable-number" title="{tags.score}">{tags.score}</span></a>
+	<a href="{config.relative_path}/tags/{tags.value}" data-value="{tags.value}"><span class="tag-item" data-tag="{tags.value}" style="<!-- IF tags.color -->color: {tags.color};<!-- ENDIF tags.color --><!-- IF tags.bgColor -->background-color: {tags.bgColor};<!-- ENDIF tags.bgColor -->">{tags.valueEscaped}</span><span class="tag-topic-count">{tags.score}</span></a>
 </h3>
 <!-- END tags -->
 		</div>

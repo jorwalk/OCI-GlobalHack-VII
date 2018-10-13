@@ -1,19 +1,10 @@
 <ul component="posts" class="posts-list" data-nextstart="{nextStart}">
 
 	<!-- BEGIN posts -->
-	<li component="post" class="posts-list-item row<!-- IF posts.deleted --> deleted<!-- ELSE --><!-- IF posts.topic.deleted --> deleted<!-- ENDIF posts.topic.deleted --><!-- ENDIF posts.deleted -->" data-pid="{posts.pid}" data-uid="{posts.uid}">
-		<div class="col-lg-11 col-sm-10 col-xs-9 post-body">
-			<a class="topic-title" href="{config.relative_path}/post/{posts.pid}">
-				<!-- IF !posts.isMainPost -->RE: <!-- ENDIF !posts.isMainPost -->{posts.topic.title}
-			</a>
+	<li component="post" class="posts-list-item" data-pid="{posts.pid}" data-uid="{posts.uid}">
 
-			<div component="post/content" class="content">
-				{posts.content}
-			</div>
-
-			<small class="topic-category"><a href="{config.relative_path}/category/{posts.category.slug}">[[global:posted_in, {posts.category.name}]]</a></small>
-
-			<div class="post-info">
+		<div class="panel panel-default">
+			<div class="panel-body">
 				<a href="{config.relative_path}/user/{posts.user.userslug}">
 					<!-- IF posts.user.picture -->
 					<img title="{posts.user.username}" class="img-rounded user-img" src="{posts.user.picture}">
@@ -22,12 +13,22 @@
 					<!-- ENDIF posts.user.picture -->
 				</a>
 
-				<div class="post-author">
-					<a href="{config.relative_path}/user/{posts.user.userslug}">{posts.user.username}</a><br />
-					<span class="timeago" title="{posts.timestampISO}"></span>
+				<a href="{config.relative_path}/user/{posts.user.userslug}">
+					<strong><span>{posts.user.username}</span></strong>
+				</a>
+				<div component="post/content" class="content">
+					<p>{posts.content}</p>
+					<p class="fade-out"></p>
 				</div>
+				<small>
+					<span class="pull-right">
+						<a href="{config.relative_path}/category/{posts.category.slug}">[[global:posted_in, {posts.category.name}]] <i class="fa {posts.category.icon}"></i> <span class="timeago" title="{posts.timestampISO}"></span></a> &bull;
+						<a href="{config.relative_path}/post/{posts.pid}">[[global:read_more]]</a>
+					</span>
+				</small>
 			</div>
 		</div>
+
 	</li>
 	<!-- END posts -->
 </ul>

@@ -1,5 +1,4 @@
-		</div><!-- END container -->
-	</main>
+	</div><!-- END container -->
 	<!-- IF !isSpider -->
 	<div class="topic-search hidden">
 		<div class="btn-group">
@@ -17,7 +16,6 @@
 	</div>
 	<!-- ENDIF !isSpider -->
 
-
 	<script defer src="{relative_path}/assets/nodebb.min.js?{config.cache-buster}"></script>
 
 	<!-- BEGIN scripts -->
@@ -30,7 +28,7 @@
 
 			<!-- IF useCustomJS -->
 			{{customJS}}
-			<!-- ENDIF useCustomJS -->
+			<!-- END -->
 		});
 	</script>
 
