@@ -6,6 +6,26 @@ define('forum/footer', ['notifications', 'chat', 'components', 'translator'], fu
 	Chat.prepareDOM();
 	translator.prepareDOM();
 
+
+	function addGoogleElement () {
+		var content = document.getElementById("content");
+	  var newDiv = document.createElement("div");
+		newDiv.setAttribute("id", "google_translate_element");
+		newDiv.setAttribute("class", "col-lg-12 col-md-12 col-sm-12 col-xs-12");
+
+
+		var transDiv = document.createElement("div");
+		transDiv.setAttribute("class", "row");
+
+		transDiv.appendChild(newDiv)
+		content.insertBefore(transDiv, content.firstChild);
+		// content.parentNode.prepend(newDiv, content);
+	}
+
+	function googleTranslateElementInit() {
+	  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL, multilanguagePage: true, autoDisplay: false}, 'google_translate_element');
+	}
+
 	function updateUnreadTopicCount(url, count) {
 		if (!utils.isNumber(count)) {
 			return;
@@ -85,4 +105,6 @@ define('forum/footer', ['notifications', 'chat', 'components', 'translator'], fu
 	socket.on('event:unread.updateChatCount', updateUnreadChatCount);
 
 	initUnreadTopics();
+	addGoogleElement();
+	googleTranslateElementInit();
 });
