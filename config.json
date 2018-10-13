@@ -1,5 +1,5 @@
 {
-    "url": "http://localhost:4567",
+    "url": "https://fierce-castle-49474.herokuapp.com",
     "secret": "acbb16e1-c722-46af-864a-4f1be4574be1",
     "database": "mongo",
     "port": "4567",
