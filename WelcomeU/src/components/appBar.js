@@ -7,7 +7,6 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
-import Modal from './Modal';
 
 const styles = {
   root: {
@@ -30,22 +29,13 @@ const styles = {
 
 function ButtonAppBar(props) {
   const { classes } = props;
-
-  this.state = { isOpen: false };
-  toggleModal = () => {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
   return (
     <div className={classes.root}>
-    <Modal show={this.state.isOpen} onClose={this.togleModal}></Modal>
       <AppBar position="static" color="primary">
         <Toolbar>
           <Typography variant="h6" className={classes.grow}>
             WelcomeU
           </Typography>
-          <Button onClick={this.toggleModal}>Chat Bot</Button>
           <div id="google_translate_element"></div>
           <div>
           <FormControl className={classes.login}>

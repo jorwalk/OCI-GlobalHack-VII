@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import welcomeMessage from '../constants/languages';
 import {withRouter} from 'react-router-dom';
+import Chatbot from './chatBot';
 
 const styles = () => ({
   root: {
@@ -56,6 +57,7 @@ function FullWidthGrid(props) {
       <Paper className={classes.box}>
       {welcomeMessage.map(m => (<ButtonContainer history={history} key={m.lang} message={m.message} classes={classes}/>))}
       </Paper>
+      {<Chatbot />}
     </div>
   );
 }

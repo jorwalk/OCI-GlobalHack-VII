@@ -30,7 +30,7 @@ class AlertDialogSlide extends React.Component {
   };
 
   componentDidMount() {
-    this.setState({ open: false });
+    this.setState({ open: true });
   }
   handleClickOpen = () => {
     this.setState({ open: true });

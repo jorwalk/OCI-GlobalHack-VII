@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider'
 import Dialog from './dialog';
 import DetailForm from './detailsForm';
+import Button from '@material-ui/core/Button';
 import Chatbot from './chatBot';
 
 const styles = () => ({
@@ -32,6 +33,9 @@ class FormPage extends React.Component {
           <Divider style={{marginTop: '10px'}} />
           <div style={{marginTop: '10px'}}>
             <DetailForm />
+          </div>
+          <div style={{display: 'flex', flexDirection: 'row-reverse'}}>
+            <Button variant="contained" color="primary" style={{color: 'white', fontSize: '18px', marginLeft: '20px'}}>Next</Button>
           </div>
         </div>
       </Paper>
