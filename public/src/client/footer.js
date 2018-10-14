@@ -6,6 +6,18 @@ define('forum/footer', ['notifications', 'chat', 'components', 'translator'], fu
 	Chat.prepareDOM();
 	translator.prepareDOM();
 
+	function addChatLink(){
+		var content = document.getElementById("google_translate_element");
+
+		var a = document.createElement('button');
+		var linkText = document.createTextNode("Launch demo modal");
+		a.appendChild(linkText);
+
+		a.setAttribute("class", "btn btn-primary pull-right");
+		a.setAttribute("data-toggle", "modal");
+		a.setAttribute("data-target", "#chat-bot-modal");
+		content.parentNode.appendChild(a);
+	}
 
 	function addGoogleElement () {
 		var content = document.getElementById("content");
@@ -19,7 +31,6 @@ define('forum/footer', ['notifications', 'chat', 'components', 'translator'], fu
 
 		transDiv.appendChild(newDiv)
 		content.insertBefore(transDiv, content.firstChild);
-		// content.parentNode.prepend(newDiv, content);
 	}
 
 	function googleTranslateElementInit() {
@@ -107,4 +118,5 @@ define('forum/footer', ['notifications', 'chat', 'components', 'translator'], fu
 	initUnreadTopics();
 	addGoogleElement();
 	googleTranslateElementInit();
+	addChatLink();
 });
