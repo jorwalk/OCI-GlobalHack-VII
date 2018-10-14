@@ -6,7 +6,6 @@ define('forum/footer', ['notifications', 'chat', 'components', 'translator'], fu
 	Chat.prepareDOM();
 	translator.prepareDOM();
 
-
 	function addGoogleElement () {
 		var content = document.getElementById("content");
 	  var newDiv = document.createElement("div");
@@ -19,7 +18,6 @@ define('forum/footer', ['notifications', 'chat', 'components', 'translator'], fu
 
 		transDiv.appendChild(newDiv)
 		content.insertBefore(transDiv, content.firstChild);
-		// content.parentNode.prepend(newDiv, content);
 	}
 
 	function googleTranslateElementInit() {
